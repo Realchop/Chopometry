@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel='stylesheet' href='static/style.css'>
+    <link rel="shortcut icon" href="static/favicon.ico">
+    <title>Aplikacija</title>
+</head>
+<body id='main-grid'>
+
+    <h1 style="font-size:4rem;grid-area: title;">Chopometry</h1>
+
+<form id='forma' name='forma' action='/' method='POST'>
+    <label for='input'>Function:</label>
+    <input type="text" form="forma" name='input' id='input' required='true' maxlength="30" title="Enter your function here. Only lowercase x is a supported variable name." >
+    <br><br>
+    <label for='range'>Range:</label>
+    <input type="text" form="forma" name='range' id='range' maxlength="21" title="Enter your desired range by separating min and max values with a comma." >
+    <br><br>
+    <button type="submit" form='forma'>Draw!</button>
+    <h2>{{context['message']}}</h2>
+</form>
+
+    <svg viewBox='{{ context["dims"] }}' id='mainframe'>
+        <polyline points='0 -1000000000 0 1000000000' stroke="black" stroke-width="{{context['rmax']/200}}" fill=none></polyline>
+        <polyline points='-1000000000 0 1000000000 0' stroke="black" stroke-width="{{context['rmax']/200}}" fill=none></polyline>
+        {% for graph in context['graph'] %}
+        <polyline points="{{graph}}" stroke="red" stroke-width="{{context['rmax']/200}};"></polyline>
+        {% endfor %} 
+    </svg>
+
+    <div id="interface">
+        <button onclick='increase()' >+</button>
+        <h2 id="move" style="font-size:2.5rem;display:inline-block;" >Move by 1</h2>
+        <button onclick='decrease()' >-</button>
+        <br>
+        <button onclick='left()' >Left</button>
+        <button onclick='right()'>Right</button>
+        <button onclick='up()' >Up</button>
+        <button onclick='down()' >Down</button>
+        <br>
+        <br>
+        <button onclick='zoom_in()' >Zoom in</button>
+        <button onclick='zoom_out()' >Zoom out</button>
+    </div>
+    <script src="static/interface_scripts.js"></script>
+</body>
+</html>
