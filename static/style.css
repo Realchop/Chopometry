@@ -1,0 +1,70 @@
+#main-grid {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 1fr 4fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:'. title .' 
+                        'form frame ctr'
+                        'form frame ctr'
+                        'form frame ctr'
+                        'form frame ctr';
+}
+
+h1 {
+    display:inline-block;
+    color: transparent;
+    font-size: 3rem;
+    background-image: linear-gradient(to left,#ed68ef,
+    #d55ed6,#9d459e, #459a9b , #56bebf , #6be9ea );
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+button {
+    font-size: 2rem;
+    border: 4px solid transparent;
+    border-image: linear-gradient(to left,#ed68ef,
+    #d55ed6,#9d459e, #459a9b , #56bebf , #6be9ea );
+    background-color: white;
+    border-image-slice: 1;
+    cursor: pointer;
+    transition: all ease .3s;
+}
+
+button:hover {
+    background-image: linear-gradient(to left,#ed68ef,
+    #d55ed6,#9d459e, #459a9b , #56bebf , #6be9ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color:transparent;
+}
+
+#mainframe {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    grid-area: frame;
+}
+
+#mainframe > polyline {
+    fill:none; 
+    cursor: pointer;
+}
+
+#forma {
+    grid-area: form;
+}
+
+#forma > label {
+    color: transparent;
+    font-size: 2rem;
+    background-image: linear-gradient(to left,#ed68ef,
+    #d55ed6,#9d459e, #459a9b , #56bebf , #6be9ea );
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+#interface {
+    grid-area: ctr;
+}
